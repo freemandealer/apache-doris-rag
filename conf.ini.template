@@ -6,6 +6,9 @@ user = root
 password = 
 db_name = doris_rag_db
 table_name = doris_rag_zh_ai_docs
+# Table used by graph RAG code: graph chunks and document status
+graph_chunks_table = graph_chunks
+doc_status_table = doc_status
 
 [embedding]
 # Supported types: ollama, openai
@@ -28,3 +31,12 @@ doc_root = /doris-website/i18n/zh-CN/docusaurus-plugin-content-docs/version-4.x/
 [app]
 # Supported languages: zh, en
 language = zh
+
+
+[knowledge_graph_llm]
+# Specific LLM for knowledge graph extraction (optional). If present, it overrides [llm] for graph tasks.
+# Supported types: ollama, openai
+type = ollama
+model = deepseek-r1:32b
+base_url = http://localhost:11434
+temperature = 0.0
